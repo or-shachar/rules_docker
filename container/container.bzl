@@ -67,9 +67,8 @@ def repositories():
     if "puller" not in excludes:
         http_file(
             name = "puller",
-            urls = [("https://storage.googleapis.com/containerregistry-releases/" +
-                     CONTAINERREGISTRY_RELEASE + "/puller.par")],
-            sha256 = "0aea6c53809846009f42f07eb569d8b3bfa79c073b16fe97312d592f45016924",
+            urls = [("https://github.com/anchlovi/containerregistry/blob/cached-puller/puller.par?raw=true")],
+            sha256 = "06881006903f7983cac22e7f591ee059bf9cbe56a3d63063f954f2e8f9763dca",
             executable = True,
         )
 

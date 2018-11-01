@@ -56,6 +56,13 @@ container_import(
         repository_ctx.path("image"),
     ]
 
+    if "docker_repository_cache" in repository_ctx.os.environ:
+        args += [
+            "--cache",
+            repository_ctx.os.environ["docker_repository_cache"]
+        ]
+
+
     # If a digest is specified, then pull by digest.  Otherwise, pull by tag.
     if repository_ctx.attr.digest:
         args += [
