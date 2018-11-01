@@ -56,7 +56,7 @@ container_import(
         repository_ctx.path("image"),
     ]
 
-    if "docker_repository_cache" in repository_ctx.os.environ:
+    if repository_ctx.os.environ.get("docker_repository_cache"):
         args += [
             "--cache",
             repository_ctx.os.environ["docker_repository_cache"]
