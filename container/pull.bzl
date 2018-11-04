@@ -58,8 +58,8 @@ container_import(
 
     cache_dir = repository_ctx.os.environ["docker_repository_cache"]
     if cache_dir:
-        cache_dir_dirname = repository_ctx.execute(["dirname", cache_dir]).stdout
-        cache_dir_name = repository_ctx.execute(["basename", cache_dir]).stdout
+        cache_dir_dirname = repository_ctx.execute(["dirname", cache_dir]).stdout.strip("\n")
+        cache_dir_name = repository_ctx.execute(["basename", cache_dir]).stdout.strip("\n")
         abs_cache_dir = "%s/%s" % (cache_dir_dirname, cache_dir_name)
         cache_dir_name = repository_ctx.execute(["mkdir", "-p", cache_dir])
         args += [
