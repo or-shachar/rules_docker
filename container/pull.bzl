@@ -56,10 +56,12 @@ container_import(
         repository_ctx.path("image"),
     ]
 
-    if repository_ctx.os.environ.get("docker_repository_cache"):
+    cache_dir = repository_ctx.os.environ["docker_repository_cache"]
+    if cache_dir:
+        abs_cache_dir = repository_ctx.execute(["echo \"$(cd \"$(dirname {cache_dir})\" && pwd)/$(basename {cache_dir})\"".format(cache_dir = cache_dir)])
         args += [
             "--cache",
-            repository_ctx.os.environ["docker_repository_cache"]
+            abs_cache_dir.stdout
         ]
 
 
