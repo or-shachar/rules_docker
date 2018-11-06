@@ -56,9 +56,9 @@ container_import(
         repository_ctx.path("image"),
     ]
 
-    cache_dir = repository_ctx.os.environ["docker_repository_cache"]
+    cache_dir = repository_ctx.os.environ.get("docker_repository_cache")
     if cache_dir:
-        if cache_dir.startswith('~/') and repository_ctx.os.environ["HOME"]:
+        if cache_dir.startswith('~/') and "HOME" in repository_ctx.os.environ:
             cache_dir = cache_dir.replace('~', repository_ctx.os.environ["HOME"], 1)
 
         args += [
