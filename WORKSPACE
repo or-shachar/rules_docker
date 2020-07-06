@@ -531,3 +531,10 @@ load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories", "kt_reg
 kotlin_repositories()
 
 kt_register_toolchains()
+
+container_pull(
+    name = "busybox_1.25.0",
+    registry = "index.docker.io",
+    repository = "library/busybox",
+    tag = "1.25.0",
+)
